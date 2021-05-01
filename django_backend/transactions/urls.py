@@ -9,9 +9,9 @@ from .views import TransactionCreate, TransactionList, TransactionUpdate, Transa
 
 urlpatterns = [
     # path('api/', include(router.urls)),
-    path('transactions/create', TransactionCreate.as_view()),
-    path('transactions/', TransactionList.as_view()),
-    path('transactions/<int:pk>/update', TransactionUpdate.as_view()),
-    path('transactions/<int:pk>/delete', TransactionDelete.as_view()),
+    path('', TransactionList.as_view()),
+    path('create', TransactionCreate.as_view()),
+    path('<int:pk>/update', TransactionUpdate.as_view()),
+    path('<int:pk>/delete', TransactionDelete.as_view()),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

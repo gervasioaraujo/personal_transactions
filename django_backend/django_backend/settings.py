@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'transactions',
     'rest_framework',
+    'authentication',
+    'transactions',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +121,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# JWT
+# JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') # it's not working!
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'my_jwt_secret_key')
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'authentication.jwt.JWTAuthentication',
+    )
+}
 
 
 # Static files (CSS, JavaScript, Images)

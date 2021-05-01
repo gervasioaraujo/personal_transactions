@@ -1,4 +1,5 @@
 from django.db import models
+# from django.contrib.auth.models import User
 
 
 class Transaction(models.Model):
@@ -9,6 +10,8 @@ class Transaction(models.Model):
         (INCOME, 'Receita'),
         (EXPENSE, 'Despesa'),
     ]
+
+    # owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     operation_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
