@@ -1,5 +1,5 @@
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 
 class Transaction(models.Model):
@@ -11,7 +11,7 @@ class Transaction(models.Model):
         (EXPENSE, 'Despesa'),
     ]
 
-    # owner = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
     operation_type = models.CharField(
         max_length=20, choices=TRANSACTION_TYPE_CHOICES)
